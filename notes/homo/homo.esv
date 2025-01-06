@@ -1,0 +1,8 @@
+# This file holds the latest set of variance parameter values.
+# It is written immediately before the first iteration
+#       unless !CONTINUE is set in which case it is read.
+# It is written immediately AFTER EVERY iteration.
+# Only edit parameter values.
+
+# Term, Position, PType, PZUF, value
+"giv(ID);giv(ID)_1", 1, V, P,    11.4528    

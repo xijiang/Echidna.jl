@@ -8,22 +8,24 @@
 - Breeding values
 - VR-I G
 """
-function simu(; nid = 100, nlc = 1000, nql = 100)
-    Z   = rand([0., 1., 2.], nid, nlc) # sample genotypes
+function simu()
+    gtxt = joinpath(ddat, "gt.txt")
+    nid, nlc, nql = 100, 1000, 100
+    Z   = convert.(Float64, reshape(read(gtxt), nlc, :)) .- 48
     qlc = sort(rand(1:nlc, nql))       # sample QTL
     eql = randn(nql) ./ sqrt(nql)      # QTL effects
     ID  = String[]                     # random ID names
     for _ in 1:nid
         push!(ID, randstring(6))
     end
-    bv = Z[:, qlc] * eql      # breeding values
-
-    twop = mean(Z, dims=1)    # for G matrix
+    qtl = Z[qlc, :]
+    bv = qtl'eql                # true breeding values
+    twop = mean(Z, dims=2)      # for G matrix
     Z  .-= twop
-    s2pq = (1 .- .5twop) * twop'
-    r2pq = 1. / s2pq[1]         # mul faster than div
-    G    = Z * Z' .* r2pq + 0.0001I
-
+    s2pq = (1 .- .5twop)'twop
+    r2pq = 1 / s2pq[1]          # mul faster than div
+    G    = Z'Z .* r2pq + 0.0001I
+    
     ID, bv, G
 end    
 
@@ -45,7 +47,7 @@ end
 ---
 Suppose ID may have 1:mo records
 """
-function hete_R(bv, h2 = 0.8, mo = 20)
+function hete_R(bv; h2 = 0.8, mo = 20)
     nid = length(bv)
     nob = rand(1:mo, nid)
     vg  = var(bv)

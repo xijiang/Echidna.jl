@@ -1,0 +1,40 @@
+ Echidna 1.35   6 Nov 2020 Mac      0.9 Gbyte  at Wed Nov 25 18:53:43 2020
+ Licensed to xijiang(xijiang.yu@nmbu.no)
+ Test use of Echidna
+ Folder: /mnt/w/workspace/projects/Echidna/notes
+
+ ID !A
+
+ GRM file 1: snp.dgiv !DENSE
+ MinMnMax of diagonal:  -34318807633821931339188854977626218733900000000000000000000000000000000.000 -34318807633821931339188854977626218733900000000000000000000000000000000.000 -34318807633821931339188854977626218733900000000000000000000000000000000.000 Average Cov NaN
+ GRM1 has 1 rows; 0 zero, 0 singular and 1 negative diagonals.  LogDet  -162.414     snp.dgiv
+
+ Data File: homo.dat
+
+ Summary of 100 data records
+
+ Variable   Levels Miss Zero      Min      Max    Distribution or Mn SD Sk Kt 
+ ID            100    0    0        1      100
+ y               1    0    0 -0.64928  1.58305  0.42407  0.52338  -0.09  -0.95
+ Error: GRM matrix is too small for giv(ID)
+ Note: Model is fitting 101 equations, DENSE portion has 1 equations.
+ * This job may use 24 processor threads. *
+    1 LogL= 1735.67  0.2176E-15        99 DF
+    2 LogL= 1735.67  0.2176E-15        99 DF
+    3 LogL= 1735.67  0.2176E-15        99 DF
+
+ Akaike Information Criterion   -3467.34 (assuming 2 parameters).
+ Bayesian Information Criterion -3462.15
+
+          Analysis of y 
+
+                         Wald F statistics
+Source of Variation           NumDF     DenDF     F-inc              P-inc 
+ mu                               1          **********
+
+ Model_Term                     Order     Gamma         Sigma     Z_ratio  %C
+ giv(ID)                          100   11.4528      0.249167E-14   -0.00  11 P    
+ Residual_units                   100   1.00000      0.217559E-15    7.58
+  giv(ID)                                100 effects fitted, 1 were zero.
+ Error: GRM matrix smaller than model term!
+ Finished: Wed Nov 25 18:53:44 2020 LogL Converged      /mnt/w/workspace/projects/Echidna/notes/homo/homo
